@@ -273,6 +273,9 @@ add_subdirectory(extlib/sampling)
 set(KAGEN_LINK_LIBRARIES sampling "${KAGEN_LINK_LIBRARIES}")
 set(KAGEN_LINK_LIBRARIES spooky "${KAGEN_LINK_LIBRARIES}")
 
+message("!!!!")
+message(${KAGEN_LINK_LIBRARIES})
+
 ################################################################################
 ### Build Macros
 
@@ -304,7 +307,7 @@ endmacro(build_mpi_prog)
 ################################################################################
 
 # descend into library source
-# add_subdirectory(include)
+add_subdirectory(include)
 
 # descend into apps
 add_subdirectory(app)

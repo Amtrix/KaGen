@@ -8,10 +8,11 @@
 # All rights reserved. Published under the BSD-2 license in the LICENSE file.
 ################################################################################
 
+
 # glob general sources
-file(GLOB GENERATOR_SRCS
+file(GLOB_RECURSE GENERATOR_SRCS
   RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
-  ${CMAKE_CURRENT_SOURCE_DIR}/*.[ch]pp
+  ${CMAKE_CURRENT_SOURCE_DIR}/*
   ${CMAKE_CURRENT_SOURCE_DIR}/generators/barabassi/*.[ch]pp
   ${CMAKE_CURRENT_SOURCE_DIR}/generators/geometric/*.[ch]pp
   ${CMAKE_CURRENT_SOURCE_DIR}/generators/geometric/delaunay/*.[ch]pp
@@ -37,13 +38,24 @@ set(GENERATOR_INCS
   ${PROJECT_SOURCE_DIR}/include/tools
   )
 
+message("#############################################################################")
+message(${MPI_INCLUDE_PATH})
+message("!!!!")
+message(${CMAKE_CURRENT_SOURCE_DIR})
+message(${GENERATOR_SRCS})
+message(${KAGEN_LINK_LIBRARIES})
+message("PRINTS:")
+message(${KAGEN_INCLUDE_DIRS})
+message(${CMAKE_CURRENT_SOURCE_DIR})
 message("\nLIBS: ${KAGEN_LINK_LIBRARIES}")
+
+
 add_library(generators STATIC ${GENERATOR_SRCS})
 set_target_properties(generators PROPERTIES LINKER_LANGUAGE CXX)
-target_compile_definitions(generators PUBLIC ${KAGEN_DEFINITIONS})
+# target_compile_definitions(generators PUBLIC ${KAGEN_DEFINITIONS})
 target_include_directories(generators PUBLIC ${PROJECT_SOURCE_DIR})
 # target_include_directories(generators PUBLIC ${GENERATOR_INCS})
-target_include_directories(generators SYSTEM PUBLIC ${KAGEN_INCLUDE_DIRS})
-target_link_libraries(generators ${KAGEN_LINK_LIBRARIES})
+target_include_directories(generators SYSTEM PUBLIC ${KAGEN_INCLUDE_DIRS} ${MPI_INCLUDE_PATH})
+target_link_libraries(generators ${KAGEN_LINK_LIBRARIES} ${MPI_LIBRARIES})
 
 ################################################################################
