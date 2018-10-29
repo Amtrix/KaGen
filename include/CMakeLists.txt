@@ -39,14 +39,6 @@ set(GENERATOR_INCS
   )
 
 message("#############################################################################")
-message(${MPI_INCLUDE_PATH})
-message("!!!!")
-message(${CMAKE_CURRENT_SOURCE_DIR})
-message(${GENERATOR_SRCS})
-message(${KAGEN_LINK_LIBRARIES})
-message("PRINTS:")
-message(${KAGEN_INCLUDE_DIRS})
-message(${CMAKE_CURRENT_SOURCE_DIR})
 message("\nLIBS: ${KAGEN_LINK_LIBRARIES}")
 
 

@@ -41,19 +41,6 @@ class Barabassi {
 
   void Generate() {
     GenerateEdges();
-
-    // Additional stats
-    if (rank_ == ROOT) {
-      HPFloat terra_bytes = 128 * config_.n * min_degree_;
-      terra_bytes /= (8);
-      terra_bytes /= (1024);
-      terra_bytes /= (1024);
-      terra_bytes /= (1024);
-      terra_bytes /= (1024);
-
-      std::cout << "memory of graph in tera bytes  " << std::setprecision(40)
-                << terra_bytes << std::endl;
-    }
   }
 
   void Output() const {
